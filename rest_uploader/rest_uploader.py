@@ -12,7 +12,8 @@ import json
 import requests
 import csv
 from tabulate import tabulate
-from watchdog.observers import Observer
+# from watchdog.observers import Observer
+from watchdog.observers.polling import PollingObserver
 from watchdog.events import FileSystemEventHandler
 from img_processor import ImageProcessor
 from .api_token import get_token_suffix
@@ -311,7 +312,7 @@ def watcher(path=None):
         path = str(Path.home())
     event_handler = MyHandler()
     print(f"Monitoring directory: {path}")
-    observer = Observer()
+    observer = PollingObserver()
     observer.schedule(event_handler, path=path, recursive=False)
     observer.start()
 
