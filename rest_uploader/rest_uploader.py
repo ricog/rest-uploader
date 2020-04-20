@@ -234,7 +234,8 @@ def upload(filename):
     """ Get the default Notebook ID and process the passed in file"""
     basefile = os.path.basename(filename)
     title, ext = os.path.splitext(basefile)
-    body = f"{basefile} uploaded from {platform.node()}\n"
+    #body = f"{basefile} uploaded from {platform.node()}\n"
+    body = ''
     datatype = mimetypes.guess_type(filename)[0]
     if datatype is None:
         # avoid subscript exception if datatype is None
